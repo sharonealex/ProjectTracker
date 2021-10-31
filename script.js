@@ -6,10 +6,12 @@ var projectNameInputEl = document.querySelector('#project-name-input');
 var projectTypeInputEl = document.querySelector('#project-type-input');
 var hourlyRateInputEl = document.querySelector('#hourly-rate-input');
 var dueDateInputEl = document.querySelector('#due-date-input');
-var deleteButtonEl = document.querySelector(".delete-project-btn")
+
 
 function displayTime(){
     var timeNow = moment().format('MMM DD, YYYY [at] hh:mm:ss a');
+    console.log(timeNow);
+    console.log(timeDisplayEl)
     timeDisplayEl.textContent = timeNow;
 }
 
@@ -81,12 +83,12 @@ printProjectData(projectName, projectType, hourlyRate, dueDate);
 function handleDeleteProject(event) {
     console.log(event.target);
     var btnClicked = event.target;
-    btnClicked.parent('tr').remove();
-    
+   btnClicked.parentElement.remove(); 
   }
 
 projectFormEl.addEventListener("submit", handleProjectFormSubmit);
 projectDisplayEl.addEventListener("click", handleDeleteProject)
-deleteButtonEl.on('click', handleDeleteProject);
+//deleteProjectBtn.addEventListener('click', handleDeleteProject);
 
 setInterval(displayTime, 1000);
+dueDateInputEl.datepicker({ minDate: 1 });
